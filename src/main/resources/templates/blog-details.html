@@ -8,12 +8,12 @@
 <body>
 <header th:insert="blocks/header:: header"></header>
 <div class = "container mt-5">
-  <div th:each="el : ${post}" class="alert alert-info mt-2">
+  <div th:each="el : ${post}" class="alert alert-info mt-2 mb-5">
     <h3 th:text="${el.title}"/>
     <p th:text="${el.full_text}"/>
-    <a th:href="'/blog/' + ${el.id} + '/edit'" class="btn btn-warning">Редактировать</a>
-    <form th:action="'/blog/' + ${el.id} +'/remove'" method="post">
-      <button class="btn btn-warning" type="submit">Удалить</button>
+    <a th:href="'/blog/' + ${el.id} + '/edit'" class="btn btn-warning">Редактировать</a><br>
+    <form th:action="'/blog/' + ${el.id} +'/remove'" method="post"><br>
+      <button class="btn btn-warning" type="submit">Удалить</button><br>
     </form>
   </div>
 </div>

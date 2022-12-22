@@ -8,7 +8,15 @@
 <body>
 <header th:insert="blocks/header:: header"></header>
 <div class = "container mt-5">
-  <h1>Блог Сайта</h1>
+  <h1>Список Книг</h1><br>
+
+  <div>
+    <form action="/blog"  method="post">
+      <input name="title" placeholder="Искать здесь..." type="search">
+      <button type="submit">Поиск</button>
+    </form>
+  </div><br>
+
   <div th:each="el : ${posts}" class="alert alert-info mt-2">
     <h3 th:text="${el.title}"/>
     <p th:text="${el.anons}"/>

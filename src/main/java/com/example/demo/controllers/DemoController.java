@@ -35,8 +35,8 @@ class DemoController {
         Post post = new Post(title,anons,full_text);
         postRepository.save(post);
         return "redirect:/blog";
-    }
 
+    }
     @GetMapping("/blog/{id}")
     public String blogDetails(@PathVariable(value = "id") long id, Model model){
         if(!postRepository.existsById(id)){
@@ -48,6 +48,20 @@ class DemoController {
         post.ifPresent(res::add);
         model.addAttribute("post",res);
         return "blog-details";
+    }
+
+    @PostMapping("/blog")
+    public String blogDetailsByFind(@RequestParam String title, Model model) {
+        try {
+            Long id = postRepository.findBytitle(title).getId();
+        System.out.println(title);
+        String redirectUrl = ("/blog/" + id);
+        return "redirect:" + redirectUrl;
+        }   catch (Exception e){
+            System.out.println("книга не найдена");
+            return "redirect:/blog";
+
+        }
     }
 
     @GetMapping("/blog/{id}/edit")
